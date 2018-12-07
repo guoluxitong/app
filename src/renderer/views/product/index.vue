@@ -78,6 +78,7 @@
             <menu-context-item @click="sellProduct" :width="100" :fontSize="18">售出</menu-context-item>
             <menu-context-item @click="handleDownload" :width="100" :fontSize="18">导出</menu-context-item>
             <menu-context-item @click="showControllerData" :width="100" :fontSize="18">监控</menu-context-item>
+            <menu-context-item @click="auxiliaryMachineInfo" :width="100" :fontSize="18">辅机信息</menu-context-item>
             <menu-context-item @click="baseInfoInfo" :width="100" :fontSize="18">运行信息</menu-context-item>
             <menu-context-item @click="handleChoiceUser" v-permission="['3']" :width="100" :fontSize="18">分配</menu-context-item>
             <menu-context-item @click="handleDelete" v-permission="['3','6']" :width="100" :fontSize="18">删除</menu-context-item>
@@ -107,7 +108,6 @@
     import {openElectronWindow} from '@/utils/windowsOperate'
     import permission from '@/directive/permission/index.js'
     import checkPermission from '@/utils/permission'
-
     import {initMedium,initFuel,initIsSell} from './product-dictionary'
     import {getBoilerModelListByCondition} from '@/api/boilerModel'
     import {getUserListByCondition} from '@/api/user'
@@ -316,6 +316,24 @@
                 let newWindow=openElectronWindow("/controller-run-info?controllerNo="+row.controllerNo,{width: 600, height: 500})
                 newWindow.on('closed', () => {
                     newWindow = null
+                })
+            },
+            /**
+             * 辅机信息
+             */
+            auxiliaryMachineInfo(row){
+                let width= Math.round(document.body.clientWidth/2)
+                let height= Math.round(document.body.clientHeight/2)+80
+                let newWindow=openElectronWindow("/auxiliary-machine-form?title=auxiliaryMachineInfo&&productFormData="+JSON.stringify(row),{width: width, height: height})
+                newWindow.on('closed', () => {newWindow = null})
+                ipcMain.once('handleCloseProductForm', (event, arg) => {
+                    newWindow.close()
+                    newWindow = null
+                    this.$message({
+                        message: '成功',
+                        type: 'success'
+                    })
+                    this.getList()
                 })
             },
             baseInfoInfo(row){

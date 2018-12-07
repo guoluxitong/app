@@ -18,6 +18,7 @@ export const constantRouterMap = [
         }]
     },
     { path: '/product-form',name: 'product-form', component: () => import('@/views/product/product-form'), hidden: true },
+    { path: '/auxiliary-machine-form',name: 'auxiliary-machine-form',component: () => import('@/views/product/auxiliary-machine-form'),hidden:true },
     { path: '/product-auxiliary-machine-info-form',name: 'product-auxiliary-machine-info-form', component: () => import('@/views/product/product-auxiliary-machine-info-form'), hidden: true },
     { path: '/map-complete-page',name: 'map-complete-page', component: () => import('@/views/map/map-complete-page'), hidden: true },
     { path: '/controller-run-info',name: 'controller-run-info', component: () => import('@/views/controller-run-info'), hidden: true },

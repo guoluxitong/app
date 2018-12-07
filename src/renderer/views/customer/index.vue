@@ -5,7 +5,6 @@
       <el-button  type="primary" icon="el-icon-search" @click="handleFilter">查询</el-button>
       <el-button style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit">新增</el-button>
     </el-row>
-
     <el-table :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row style="width: 120%" @row-contextmenu="openTableMenu">
       <el-table-column :show-overflow-tooltip="true" align="left" label="客户名称">
         <template slot-scope="scope">
