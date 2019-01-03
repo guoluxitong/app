@@ -1,6 +1,6 @@
 {
   "name": "boiler-manage",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": "doudou",
   "description": "锅炉远程监控平台隶属于简洁软件",
   "license": null,
@@ -24,7 +24,7 @@
     },
     "publish": {
       "provider": "generic",
-      "url": "http://autoupdate.sdcsoft.com.cn/files/BoilerPlantSystem/"
+      "url": "http://autoupdate.sdcsoft.com.cn/files/BoilerPlantSystemTest/"
     },
     "files": [
       "dist/electron/**/*"
