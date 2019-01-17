@@ -9,7 +9,7 @@ import mockField from '../meta/ctl_njrt/mockField'
 import openCloseField from '../meta/ctl_njrt/openCloseField'
 import powerField from '../meta/ctl_njrt/powerField'
 
-export default class devicePointMap_CTL_NJRT_T2 extends map {
+export default class devicePointMap_CTL_RT_T2 extends map {
     constructor() {
         super();
         const byteFieldObj =new byteField();
