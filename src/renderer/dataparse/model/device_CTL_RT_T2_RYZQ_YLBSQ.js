@@ -1,6 +1,6 @@
 import device_CTL_RT_T2_RYZQ from "./device_CTL_RT_T2_RYZQ";
 import {deviceModel} from "./sdcSoftDevice";
-export default class device_CTL_RT_T2_RYZQ_YLKZQ extends device_CTL_RT_T2_RYZQ{
+export default class device_CTL_RT_T2_RYZQ_YLBSQ extends device_CTL_RT_T2_RYZQ{
     constructor(){
         super()
         this.byteArrayLength=109

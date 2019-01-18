@@ -4,7 +4,7 @@ import {deviceModel} from "./sdcSoftDevice"
 import element from "../entity/element";
 
 const key_point_ran_shao_qi = "_ranshaoqi"
-const key_point_ran_shao_qi_kongzhi = "oc_ranshaoqiqitingkongzhi";
+const key_point_ran_shao_qi_kongzhi = "oc_ranshaoqikongzhi";
 const key_point_ran_shao_qi_status = "oc_ranshaoqifuhetiaojie";
 
 const key_point_add_shui_beng = "_addshuibeng"
