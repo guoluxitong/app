@@ -12,10 +12,10 @@
             <el-select clearable style="width: 150px"  v-model="listQuery.medium" placeholder="介质">
                 <el-option v-for="item in mediumArray" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
-            <el-date-picker v-model="listQuery.saleDate" type="date" value-format="yyyy-MM-dd" placeholder="售出时间" style="width: 150px;"></el-date-picker>
+            <!--<el-date-picker v-model="listQuery.saleDate" type="date" value-format="yyyy-MM-dd" placeholder="售出时间" style="width: 150px;"></el-date-picker>-->
             <el-button  type="primary" icon="el-icon-search" @click="handleFilter">查询</el-button>
-            <el-button style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit" v-permission="['3','5']">新增</el-button>
-            <el-button style="margin-left: 10px;" @click="showMap" type="primary" icon="el-icon-location-outline">地图分布</el-button>
+            <el-button style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit" v-permission="['3','5','9','10']">新增</el-button>
+            <!--<el-button style="margin-left: 10px;" @click="showMap" type="primary" icon="el-icon-location-outline">地图分布</el-button>-->
         </el-row>
 
         <el-table :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row style="width: 120%" @row-contextmenu="openTableMenu">
@@ -49,57 +49,57 @@
                     <span>{{scope.row.tonnageNum}}</span>
                 </template>
             </el-table-column>
-            <el-table-column :show-overflow-tooltip="true" align="left" label="是否售出">
-                <template slot-scope="scope">
-                    <span>{{scope.row.isSell  | dictionaryValueFieldFilter(isSellArray)}}</span>
-                </template>
-            </el-table-column>
-            <el-table-column :show-overflow-tooltip="true" align="left" label="客户">
-                <template slot-scope="scope">
-                    <span v-if="scope.row.boilerCustomerName">{{scope.row.boilerCustomerName}}</span>
-                    <span v-if="scope.row.boilerCustomerName==null">无</span>
-                </template>
-            </el-table-column>
-            <el-table-column :show-overflow-tooltip="true" align="left" label="售出时间">
-                <template slot-scope="scope">
-                    <span v-if="scope.row.saleDate">{{scope.row.saleDate}}</span>
-                    <span v-if="scope.row.saleDate==null">无</span>
-                </template>
-            </el-table-column>
-            <el-table-column :show-overflow-tooltip="true"  align="left" label="售出地址">
-                <template slot-scope="scope">
-                    <span v-if="scope.row.province||scope.row.city||scope.row.district||scope.row.street">{{scope.row.province}}{{scope.row.city}}{{scope.row.district}}{{scope.row.street}}</span><span v-else>无</span>
-                </template>
-            </el-table-column>
+            <!--<el-table-column :show-overflow-tooltip="true" align="left" label="是否售出">-->
+                <!--<template slot-scope="scope">-->
+                    <!--<span>{{scope.row.isSell  | dictionaryValueFieldFilter(isSellArray)}}</span>-->
+                <!--</template>-->
+            <!--</el-table-column>-->
+            <!--<el-table-column :show-overflow-tooltip="true" align="left" label="客户">-->
+                <!--<template slot-scope="scope">-->
+                    <!--<span v-if="scope.row.boilerCustomerName">{{scope.row.boilerCustomerName}}</span>-->
+                    <!--<span v-if="scope.row.boilerCustomerName==null">无</span>-->
+                <!--</template>-->
+            <!--</el-table-column>-->
+            <!--<el-table-column :show-overflow-tooltip="true" align="left" label="售出时间">-->
+                <!--<template slot-scope="scope">-->
+                    <!--<span v-if="scope.row.saleDate">{{scope.row.saleDate}}</span>-->
+                    <!--<span v-if="scope.row.saleDate==null">无</span>-->
+                <!--</template>-->
+            <!--</el-table-column>-->
+            <!--<el-table-column :show-overflow-tooltip="true"  align="left" label="售出地址">-->
+                <!--<template slot-scope="scope">-->
+                    <!--<span v-if="scope.row.province||scope.row.city||scope.row.district||scope.row.street">{{scope.row.province}}{{scope.row.city}}{{scope.row.district}}{{scope.row.street}}</span><span v-else>无</span>-->
+                <!--</template>-->
+            <!--</el-table-column>-->
         </el-table>
         <menu-context ref="menuContext">
-            <menu-context-item @click="handleUpdate" v-permission="['3','5']" :width="100" :fontSize="18">编辑</menu-context-item>
-            <menu-context-item @click="handleCopy" v-permission="['3','5']" :width="100" :fontSize="18">复制</menu-context-item>
-            <menu-context-item @click="sellProduct" :width="100" :fontSize="18">售出</menu-context-item>
-            <menu-context-item @click="handleDownload" :width="100" :fontSize="18">导出</menu-context-item>
+            <menu-context-item @click="handleUpdate" v-permission="['3','5','9','10']" :width="100" :fontSize="18">编辑</menu-context-item>
+            <!--<menu-context-item @click="handleCopy" v-permission="['3','5','9','10']" :width="100" :fontSize="18">复制</menu-context-item>-->
+            <!--<menu-context-item @click="sellProduct" :width="100" :fontSize="18">售出</menu-context-item>-->
+            <!--<menu-context-item @click="handleDownload" :width="100" :fontSize="18">导出</menu-context-item>-->
             <menu-context-item @click="showControllerData" :width="100" :fontSize="18">监控</menu-context-item>
-            <menu-context-item @click="auxiliaryMachineInfo" :width="100" :fontSize="18">辅机信息</menu-context-item>
-            <menu-context-item @click="baseInfoInfo" :width="100" :fontSize="18">运行信息</menu-context-item>
-            <menu-context-item @click="handleChoiceUser" v-permission="['3']" :width="100" :fontSize="18">分配</menu-context-item>
-            <menu-context-item @click="handleDelete" v-permission="['3','6']" :width="100" :fontSize="18">删除</menu-context-item>
+            <!--<menu-context-item @click="auxiliaryMachineInfo" :width="100" :fontSize="18">辅机信息</menu-context-item>-->
+            <!--<menu-context-item @click="baseInfoInfo" :width="100" :fontSize="18">运行信息</menu-context-item>-->
+            <!--<menu-context-item @click="handleChoiceUser" v-permission="['3','9','10']" :width="100" :fontSize="18">分配</menu-context-item>-->
+            <menu-context-item @click="handleDelete" v-permission="['3','6','9','10']" :width="100" :fontSize="18">删除</menu-context-item>
         </menu-context>
         <div class="pagination-container">
             <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="listQuery.pageNum" :page-sizes="[5,10,15,20]" :page-size="listQuery.pageSize" layout="total, sizes, prev, pager, next, jumper" :total="listQuery.total">
             </el-pagination>
         </div>
-        <div class="user-select">
-            <el-dialog title="分配用户" :visible.sync="dialogChoiceUserFormVisible" width="30%">
-                <el-form  ref="choiceUserForm" :model="choiceUserFormData" label-position="right" label-width="80px" style='width: 90%; margin-left:15px;'>
-                    <el-select v-model="choiceUserFormData.selectUserIdArray" multiple style="width: 100%" placeholder="请选择">
-                        <el-option v-for="item in choiceUserFormData.userOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
-                </el-form>
-                <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialogChoiceUserFormVisible = false">取消</el-button>
-                    <el-button type="primary" @click="confirmSubmitChoiceUser()">确认</el-button>
-                </div>
-            </el-dialog>
-        </div>
+        <!--<div class="user-select">-->
+            <!--<el-dialog title="分配用户" :visible.sync="dialogChoiceUserFormVisible" width="30%">-->
+                <!--<el-form  ref="choiceUserForm" :model="choiceUserFormData" label-position="right" label-width="80px" style='width: 90%; margin-left:15px;'>-->
+                    <!--<el-select v-model="choiceUserFormData.selectUserIdArray" multiple style="width: 100%" placeholder="请选择">-->
+                        <!--<el-option v-for="item in choiceUserFormData.userOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>-->
+                    <!--</el-select>-->
+                <!--</el-form>-->
+                <!--<div slot="footer" class="dialog-footer">-->
+                    <!--<el-button @click="dialogChoiceUserFormVisible = false">取消</el-button>-->
+                    <!--<el-button type="primary" @click="confirmSubmitChoiceUser()">确认</el-button>-->
+                <!--</div>-->
+            <!--</el-dialog>-->
+        <!--</div>-->
         <boiler-common-delete-validate-dialog  @confirmDeleteValidate="confirmDeleteValidate" @confirmCancelValidate="confirmCancelValidate" :deleteValidateFormDialogVisible="deleteValidateFormDialogVisible" :id="delId"></boiler-common-delete-validate-dialog>
     </div>
 </template>
@@ -217,7 +217,7 @@
             getList() {
                 this.listLoading = true
                 //3->锅炉厂管理员 5->锅炉厂普通用户
-                if(checkPermission(['3','5'])){
+                if(checkPermission(['3','5','9','10'])){
                     this.listQuery.userId=this.$store.state.user.userId;
                 }
                 getProductListByCondition(this.listQuery).then(response => {

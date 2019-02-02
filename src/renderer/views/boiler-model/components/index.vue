@@ -3,7 +3,7 @@
     <el-row class="app-query">
       <el-input v-model="listQuery.label" placeholder="名称"  style="width: 150px;"></el-input>
       <el-button  type="primary" icon="el-icon-search" @click="handleFilter">查询</el-button>
-      <el-button style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit" v-permission="['3','5']">新增</el-button>
+      <el-button style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit" v-permission="['3','5','9']">新增</el-button>
     </el-row>
 
     <el-table :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row style="width: 120%" @row-contextmenu="openTableMenu">
@@ -14,8 +14,8 @@
       </el-table-column>
     </el-table>
     <menu-context ref="menuContext">
-      <menu-context-item @click="handleUpdate" v-permission="['3','5']">编辑</menu-context-item>
-      <menu-context-item @click="handleDelete" v-permission="['3','5']">删除</menu-context-item>
+      <menu-context-item @click="handleUpdate" v-permission="['3','5','9']">编辑</menu-context-item>
+      <menu-context-item @click="handleDelete" v-permission="['3','5','9']">删除</menu-context-item>
     </menu-context>
     <div class="pagination-container">
       <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="listQuery.pageNum" :page-sizes="[5,10,15,20]" :page-size="listQuery.pageSize" layout="total, sizes, prev, pager, next, jumper" :total="listQuery.total">
@@ -103,7 +103,7 @@
             },
             getList() {
                 this.listLoading = true
-                if(checkPermission(['3','5'])){
+                if(checkPermission(['3','5','9'])){
                     this.listQuery.orgType=this.$store.state.user.orgType;
                     this.listQuery.orgId=this.$store.state.user.orgId;
                 }

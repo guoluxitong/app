@@ -12,7 +12,7 @@
                         <el-select clearable class="filter-item" v-model="productFormData.boilerModelNumber"  style="width: 60%">
                             <el-option v-for="item in boilerModelNumberArray" :key="item.value" :label="item.label" :value="item.value"></el-option>
                         </el-select>
-                        <el-button type="primary" @click="handleAddBoilerModel" v-permission="['3']">添加</el-button>
+                        <el-button type="primary" @click="handleAddBoilerModel" v-permission="['3','9']">添加</el-button>
                     </el-form-item>
                 </el-col>
             </el-row>

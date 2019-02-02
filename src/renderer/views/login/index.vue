@@ -97,7 +97,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     width: 100%;
     height: 100%;
-    background: url(./imgs/login-back.gif) no-repeat;
+    background: url(./imgs/login-back.png) no-repeat;
     background-size: 100% 180px;
 
   }
