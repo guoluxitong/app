@@ -22,7 +22,7 @@
                             instance.confirmButtonLoading = true;
                             instance.message = '正在下载';
                             instance.confirmButtonText = '下载中...';
-                            let urls = "http://autoupdate.sdcsoft.com.cn/files/BoilerPlantSystem/update/appDownload.exe";
+                            let urls = "http://autoupdate.sdcsoft.com.cn/files/BoilerPlantSystem/update/boilermanagerDownload.exe";
                             window.location.href = urls;
                             setTimeout(() => {
                                 instance.message = '下载完成，请关闭程序进行安装';
